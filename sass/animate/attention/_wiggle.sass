@@ -1,0 +1,35 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+
+// ---------------------------------------------------------------------------
+// wiggle
+
+=animate-wiggle($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: wiggle
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +skewX(9deg)
+      10%
+        +skewX(-8deg)
+      20%
+        +skewX(7deg)
+      30%
+        +skewX(-6deg)
+      40%
+        +skewX(5deg)
+      50%
+        +skewX(-4deg)
+      60%
+        +skewX(3deg)
+      70%
+        +skewX(-2deg)
+      80%
+        +skewX(1deg)
+      90%
+        +skewX(0deg)
+      100%
+        +skewX(0deg)
+  +animation-class($name, $class)

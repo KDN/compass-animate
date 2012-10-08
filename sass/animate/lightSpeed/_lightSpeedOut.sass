@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/transform
+@import compass/css3/opacity
+
+// ---------------------------------------------------------------------------
+// lightSpeedOut
+
+=animate-lightSpeedOut($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: lightSpeedOut
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +transform(translateX(0%) skewX(0deg))
+        +opacity(1)
+      100%
+        +transform(translateX(100%) skewX(-30deg))
+        +opacity(0)
+  +animation-class($name, $class)

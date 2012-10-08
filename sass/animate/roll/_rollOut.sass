@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/transform
+@import compass/css3/opacity
+
+// ---------------------------------------------------------------------------
+// rollOut
+
+=animate-rollOut($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: rollOut
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +opacity(1)
+        +transform(translateX(0px) rotate(0deg))
+      100%
+        +opacity(0)
+        +transform(translateX(-100%) rotate(-120deg))
+  +animation-class($name, $class)

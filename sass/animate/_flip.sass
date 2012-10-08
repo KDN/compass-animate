@@ -1,0 +1,79 @@
+// ---------------------------------------------------------------------------
+// special class handling
+
+=flip-class($name, $class: $default-animation-class-mode)
+  +animation-class($name, $class)
+    +backface-visibility(visible)
+
+// ---------------------------------------------------------------------------
+// imports
+@import compass/css3/animation
+
+@import flip/flipIn
+@import flip/flipOut
+
+// ---------------------------------------------------------------------------
+// flip [ only | in | out | x | y | all |
+//        flipIn | flipInX | flipInY |
+//        flipOut | flipOutX | flipOutY |
+//        flipX | flipY ]
+
+=animate-flip($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $only: yepnope($sub, all only)
+  $flipInX: yepnope($sub, all flipIn flipInX flipX in x)
+  $flipInY: yepnope($sub, all flipIn flipInY flipY in y)
+  $flipOutX: yepnope($sub, all flipOut flipOutX flipX out x)
+  $flipOutY: yepnope($sub, all flipOut flipOutY flipY out y)
+  @if $flipInX
+    +animate-flipInX($class, $keyframes)
+  @if $flipInY
+    +animate-flipInY($class, $keyframes)
+  @if $flipOutX
+    +animate-flipOutX($class, $keyframes)
+  @if $flipOutY
+    +animate-flipOutY($class, $keyframes)
+  $name: flip
+  @if $only
+    @if $keyframes
+      +keyframes($name)
+        0%
+          +transform(perspective(400px) rotateY(0))
+          +animation-timing-function(ease-out)
+        40%
+          +transform(perspective(400px) translateZ(150px) rotateY(170deg))
+          +animation-timing-function(ease-out)
+        50%
+          +transform(perspective(400px) translateZ(150px) rotateY(190deg) scale(1))
+          +animation-timing-function(ease-in)
+        80%
+          +transform(perspective(400px) rotateY(360deg) scale(0.95))
+          +animation-timing-function(ease-in)
+        100%
+          +transform(perspective(400px) scale(1))
+          +animation-timing-function(ease-in)
+    +flip-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// flipX [ in | out | all ]
+
+=animate-flipX($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $in: yepnope($sub, all in)
+  $out: yepnope($sub, all out)
+  @if $in
+    +animate-flipInX(all, $class, $keyframes)
+  @if $out
+    +animate-flipOutX(all, $class, $keyframes)
+
+// ---------------------------------------------------------------------------
+// flipY [ in | out | all ]
+
+=animate-flipY($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $in: yepnope($sub, all in)
+  $out: yepnope($sub, all out)
+  @if $in
+    +animate-flipInY(all, $class, $keyframes)
+  @if $out
+    +animate-flipOutY(all, $class, $keyframes)

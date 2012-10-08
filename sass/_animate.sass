@@ -1,0 +1,48 @@
+// ---------------------------------------------------------------------------
+// Animations from Animate.css
+// Author : Dan Eden
+// URL    : http://daneden.me/animate/
+// ---------------------------------------------------------------------------
+// imports
+
+@import helpers
+
+@import animate/attention
+@import animate/bounce
+@import animate/fade
+@import animate/flip
+@import animate/lightSpeed
+@import animate/roll
+@import animate/rotate
+@import animate/special
+
+// ---------------------------------------------------------------------------
+// animate [ attention | bounce | fade | flip |
+//           lightSpeed | roll | rotate | special | all ]
+
+=animate($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $attention: yepnope($sub, all attention)
+  $bounce: yepnope($sub, all bounce)
+  $fade: yepnope($sub, all fade)
+  $flip: yepnope($sub, all flip)
+  $lightSpeed: yepnope($sub, all lightSpeed)
+  $roll: yepnope($sub, all roll)
+  $rotate: yepnope($sub, all rotate)
+  $special: yepnope($sub, all special)
+  @if $attention
+    +animate-attention(all, $class, $keyframes)
+  @if $bounce
+    +animate-bounce(all, $class, $keyframes)
+  @if $fade
+    +animate-fade(all, $class, $keyframes)
+  @if $flip
+    +animate-flip(all, $class, $keyframes)
+  @if $lightSpeed
+    +animate-lightSpeed(all, $class, $keyframes)
+  @if $roll
+    +animate-roll(all, $class, $keyframes)
+  @if $rotate
+    +animate-rotate(all, $class, $keyframes)
+  @if $special
+    +animate-special(all, $class, $keyframes)

@@ -1,0 +1,65 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/transform
+@import bounce/bounceIn
+@import bounce/bounceOut
+
+// ---------------------------------------------------------------------------
+// bounce [ in | inUp | inDown | inLeft | inRight |
+//          out | outUp | outDown | outLeft | outRight |
+//          up | down | left | right | only | all ]
+
+=animate-bounce($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $only: yepnope($sub, all only)
+  $in: yepnope($sub, all in)
+  $inUp: yepnope($sub, all in inUp up)
+  $inDown: yepnope($sub, all in inDown down)
+  $inLeft: yepnope($sub, all in inLeft left)
+  $inRight: yepnope($sub, all in inRight right)
+  $out: yepnope($sub, all out)
+  $outUp: yepnope($sub, all out outUp up)
+  $outDown: yepnope($sub, all out outDown down)
+  $outLeft: yepnope($sub, all out outLeft left)
+  $outRight: yepnope($sub, all out outRight right)
+  @if $in
+    +animate-bounceIn($class, $keyframes)
+  @if $inUp
+    +animate-bounceInUp($class, $keyframes)
+  @if $inDown
+    +animate-bounceInDown($class, $keyframes)
+  @if $inLeft
+    +animate-bounceInLeft($class, $keyframes)
+  @if $inRight
+    +animate-bounceInRight($class, $keyframes)
+  @if $out
+    +animate-bounceOut($class, $keyframes)
+  @if $outUp
+    +animate-bounceOutUp($class, $keyframes)
+  @if $outDown
+    +animate-bounceOutDown($class, $keyframes)
+  @if $outLeft
+    +animate-bounceOutLeft($class, $keyframes)
+  @if $outRight
+    +animate-bounceOutRight($class, $keyframes)
+  $name: bounce
+  @if $only
+    @if $keyframes
+      +keyframes($name)
+        0%
+          +translateY(0)
+        20%
+          +translateY(0)
+        40%
+          +translateY(-30px)
+        50%
+          +translateY(0)
+        60%
+          +translateY(-15px)
+        80%
+          +translateY(0)
+        100%
+          +translateY(0)
+    +animation-class($name, $class)

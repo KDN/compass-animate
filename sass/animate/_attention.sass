@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import attention/flash
+@import attention/shake
+@import attention/tada
+@import attention/swing
+@import attention/wobble
+@import attention/pulse
+@import attention/wiggle
+
+// ---------------------------------------------------------------------------
+// attention [ flash | shake | tada |
+//             swing | wobble | pulse | wiggle ]
+
+=animate-attention($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $flash: yepnope($sub, all flash)
+  $shake: yepnope($sub, all shake)
+  $tada: yepnope($sub, all tada)
+  $swing: yepnope($sub, all swing)
+  $wobble: yepnope($sub, all wobble)
+  $pulse: yepnope($sub, all pulse)
+  $wiggle: yepnope($sub, all wiggle)
+  @if $flash
+    +animate-flash($class, $keyframes)
+  @if $shake
+    +animate-shake($class, $keyframes)
+  @if $tada
+    +animate-tada($class, $keyframes)
+  @if $swing
+    +animate-swing($class, $keyframes)
+  @if $wobble
+    +animate-wobble($class, $keyframes)
+  @if $pulse
+    +animate-pulse($class, $keyframes)
+  @if $wiggle
+    +animate-wiggle($class, $keyframes)

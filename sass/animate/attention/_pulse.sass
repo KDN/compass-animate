@@ -1,0 +1,19 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+
+// ---------------------------------------------------------------------------
+// pulse
+
+=animate-pulse($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: pulse
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +scale(1)
+      50%
+        +scale(1.1)
+      100%
+        +scale(1)
+  +animation-class($name, $class)

@@ -1,0 +1,155 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/transform
+@import compass/css3/opacity
+
+// ---------------------------------------------------------------------------
+// rotateOut [ only | up | down | left | right |
+//            downLeft | downRight | upLeft | upRight | all ]
+
+=animate-rotateOut($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $only: yepnope($sub, all only)
+  $downLeft: yepnope($sub, all down left downLeft)
+  $downRight: yepnope($sub, all down right downRight)
+  $upLeft: yepnope($sub, all up left upLeft)
+  $upRight: yepnope($sub, all up right upRight)
+  @if $downLeft
+    +animate-rotateOutDownLeft($class, $keyframes)
+  @if $downRight
+    +animate-rotateOutDownRight($class, $keyframes)
+  @if $upLeft
+    +animate-rotateOutUpLeft($class, $keyframes)
+  @if $upRight
+    +animate-rotateOutUpRight($class, $keyframes)
+  $name: rotateOut
+  @if $only
+    @if $keyframes
+      +keyframes($name)
+        0%
+          +transform-origin(center, center)
+          +rotate(0)
+          opacity: 1
+        100%
+          +transform-origin(center, center)
+          +rotate(200deg)
+          opacity: 0
+    +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// rotateOutUp [ left | right | all ]
+
+=animate-rotateOutUp($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $left: yepnope($sub, all left)
+  $right: yepnope($sub, all right)
+  @if $left
+    +animate-rotateOutUpLeft($class, $keyframes)
+  @if $right
+    +animate-rotateOutUpRight($class, $keyframes)
+
+// ---------------------------------------------------------------------------
+// rotateOutDown [ left | right | all ]
+
+=animate-rotateOutDown($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $left: yepnope($sub, all left)
+  $right: yepnope($sub, all right)
+  @if $left
+    +animate-rotateOutDownLeft($class, $keyframes)
+  @if $right
+    +animate-rotateOutDownRight($class, $keyframes)
+
+// ---------------------------------------------------------------------------
+// rotateOutLeft [ up | down | all ]
+
+=animate-rotateOutLeft($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $up: yepnope($sub, all up)
+  $down: yepnope($sub, all down)
+  @if $up
+    +animate-rotateOutUpLeft($class, $keyframes)
+  @if $down
+    +animate-rotateOutDownLeft($class, $keyframes)
+
+// ---------------------------------------------------------------------------
+// rotateOutRight [ up | down | all ]
+
+=animate-rotateOutRight($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $up: yepnope($sub, all up)
+  $down: yepnope($sub, all down)
+  @if $up
+    +animate-rotateOutUpRight($class, $keyframes)
+  @if $down
+    +animate-rotateOutDownRight($class, $keyframes)
+
+// ---------------------------------------------------------------------------
+// rotateOutDownLeft
+
+=animate-rotateOutDownLeft($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: rotateOutDownLeft
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +transform-origin(left, bottom)
+        +rotate(0)
+        opacity: 1
+      100%
+        +transform-origin(left, bottom)
+        +rotate(90deg)
+        opacity: 0
+  +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// rotateOutUpLeft
+
+=animate-rotateOutUpLeft($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: rotateOutUpLeft
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +transform-origin(left, bottom)
+        +rotate(0)
+        opacity: 1
+      100%
+        +transform-origin(left, bottom)
+        +rotate(-90deg)
+        opacity: 0
+  +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// rotateOutDownRight
+
+=animate-rotateOutDownRight($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: rotateOutDownRight
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +transform-origin(right, bottom)
+        +rotate(0)
+        opacity: 1
+      100%
+        +transform-origin(right, bottom)
+        +rotate(-90deg)
+        opacity: 0
+  +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// rotateOutUpRight
+
+=animate-rotateOutUpRight($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: rotateOutUpRight
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +transform-origin(right, bottom)
+        +rotate(0)
+        opacity: 1
+      100%
+        +transform-origin(right, bottom)
+        +rotate(90deg)
+        opacity: 0
+  +animation-class($name, $class)

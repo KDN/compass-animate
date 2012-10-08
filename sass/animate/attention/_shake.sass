@@ -1,0 +1,36 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/transform
+
+// ---------------------------------------------------------------------------
+// shake
+
+=animate-shake($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: shake
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +translateX(0)
+      10%
+        +translateX(-10px)
+      20%
+        +translateX(10px)
+      30%
+        +translateX(-10px)
+      40%
+        +translateX(10px)
+      50%
+        +translateX(-10px)
+      60%
+        +translateX(10px)
+      70%
+        +translateX(-10px)
+      80%
+        +translateX(10px)
+      90%
+        +translateX(-10px)
+      100%
+        +translateX(0)
+  +animation-class($name, $class)

@@ -1,0 +1,69 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import fade/fadeIn
+@import fade/fadeOut
+
+// ---------------------------------------------------------------------------
+// fade [ in | inUp | inDown | inLeft | inRight |
+//        inUpBig | inDownBig | inLeftBig | inRightBig |
+//        out | outUp | outDown | outLeft | outRight |
+//        outUpBig | outDownBig | outLeftBig | outRightBig |
+//        up | down | left | right | big | all ]
+
+=animate-fade($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $in: yepnope($sub, all in)
+  $inUp: yepnope($sub, all in inUp up)
+  $inDown: yepnope($sub, all in inDown down)
+  $inLeft: yepnope($sub, all in inLeft left)
+  $inRight: yepnope($sub, all in inRight right)
+  $inUpBig: yepnope($sub, all in inUp up big)
+  $inDownBig: yepnope($sub, all in inDown down big)
+  $inLeftBig: yepnope($sub, all in inLeft left big)
+  $inRightBig: yepnope($sub, all in inRight right big)
+  $out: yepnope($sub, all out)
+  $outUp: yepnope($sub, all out outUp up)
+  $outDown: yepnope($sub, all out outDown down)
+  $outLeft: yepnope($sub, all out outLeft left)
+  $outRight: yepnope($sub, all out outRight right)
+  $outUpBig: yepnope($sub, all out outUp up big)
+  $outDownBig: yepnope($sub, all out outDown down big)
+  $outLeftBig: yepnope($sub, all out outLeft left big)
+  $outRightBig: yepnope($sub, all out outRight right big)
+  @if $in
+    +animate-fadeIn($class, $keyframes)
+  @if $inUp
+    +animate-fadeInUp($class, $keyframes)
+  @if $inDown
+    +animate-fadeInDown($class, $keyframes)
+  @if $inLeft
+    +animate-fadeInLeft($class, $keyframes)
+  @if $inRight
+    +animate-fadeInRight($class, $keyframes)
+  @if $inUpBig
+    +animate-fadeInUpBig($class, $keyframes)
+  @if $inDownBig
+    +animate-fadeInDownBig($class, $keyframes)
+  @if $inLeftBig
+    +animate-fadeInLeftBig($class, $keyframes)
+  @if $inRightBig
+    +animate-fadeInRightBig($class, $keyframes)
+  @if $out
+    +animate-fadeOut($class, $keyframes)
+  @if $outUp
+    +animate-fadeOutUp($class, $keyframes)
+  @if $outDown
+    +animate-fadeOutDown($class, $keyframes)
+  @if $outLeft
+    +animate-fadeOutLeft($class, $keyframes)
+  @if $outRight
+    +animate-fadeOutRight($class, $keyframes)
+  @if $outUpBig
+    +animate-fadeOutUpBig($class, $keyframes)
+  @if $outDownBig
+    +animate-fadeOutDownBig($class, $keyframes)
+  @if $outLeftBig
+    +animate-fadeOutLeftBig($class, $keyframes)
+  @if $outRightBig
+    +animate-fadeOutRightBig($class, $keyframes)

@@ -1,0 +1,21 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/transform
+@import compass/css3/opacity
+
+// ---------------------------------------------------------------------------
+// rollIn
+
+=animate-rollIn($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: rollIn
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +opacity(0)
+        +transform(translateX(-100%) rotate(-120deg))
+      100%
+        +opacity(1)
+        +transform(translateX(0px) rotate(0deg))
+  +animation-class($name, $class)

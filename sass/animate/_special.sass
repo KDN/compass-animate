@@ -1,0 +1,13 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import special/hinge
+
+// ---------------------------------------------------------------------------
+// special [ hinge | all ]
+
+=animate-special($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $hinge: yepnope($sub, all hinge)
+  @if $hinge
+    +animate-hinge($class, $keyframes)

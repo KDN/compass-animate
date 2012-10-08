@@ -1,0 +1,47 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/opacity
+
+// ---------------------------------------------------------------------------
+// flipOut [ x | y | all ]
+
+=animate-flipOut($sub: all, $class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $sub: compact($sub)
+  $x: yepnope($sub, all x)
+  $y: yepnope($sub, all y)
+  @if $x
+    +animate-flipOutX(all, $class, $keyframes)
+  @if $y
+    +animate-flipOutY(all, $class, $keyframes)
+
+// ---------------------------------------------------------------------------
+// flipOutX
+
+=animate-flipOutX($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: flipOutX
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +transform(perspective(400px) rotateX(0deg))
+        +opacity(1)
+      100%
+        +transform(perspective(400px) rotateX(90deg))
+        +opacity(0)
+  +flip-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// flipOutY
+
+=animate-flipOutY($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: flipOutY
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +transform(perspective(400px) rotateY(0deg))
+        +opacity(1)
+      100%
+        +transform(perspective(400px) rotateY(90deg))
+        +opacity(0)
+  +flip-class($name, $class)

@@ -1,0 +1,93 @@
+// ---------------------------------------------------------------------------
+// imports
+
+@import compass/css3/animation
+@import compass/css3/transform
+@import compass/css3/opacity
+
+// ---------------------------------------------------------------------------
+// bounceOut
+
+=animate-bounceOut($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: bounceOut
+  @if $keyframes
+    +keyframes(bounceOut)
+      0%
+        +scale(1)
+      25%
+        +scale(0.95)
+      50%
+        opacity: 1
+        +scale(1.1)
+      100%
+        opacity: 0
+        +scale(0.3)
+  +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// bounceOutUp
+
+=animate-bounceOutUp($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: bounceOutUp
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +translateY(0)
+      20%
+        opacity: 1
+        +translateY(20px)
+      100%
+        opacity: 0
+        +translateY(-2000px)
+  +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// bounceOutDown
+
+=animate-bounceOutDown($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: bounceOutDown
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +translateY(0)
+      20%
+        opacity: 1
+        +translateY(-20px)
+      100%
+        opacity: 0
+        +translateY(2000px)
+  +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// bounceOutLeft
+
+=animate-bounceOutLeft($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: bounceOutLeft
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +translateX(0)
+      20%
+        opacity: 1
+        +translateX(20px)
+      100%
+        opacity: 0
+        +translateX(-2000px)
+  +animation-class($name, $class)
+
+// ---------------------------------------------------------------------------
+// bounceOutRight
+
+=animate-bounceOutRight($class: $default-animation-class-mode, $keyframes: $default-keyframes-output)
+  $name: bounceOutRight
+  @if $keyframes
+    +keyframes($name)
+      0%
+        +translateX(0)
+      20%
+        opacity: 1
+        +translateX(-20px)
+      100%
+        opacity: 0
+        +translateX(2000px)
+  +animation-class($name, $class)
